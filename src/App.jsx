@@ -4,7 +4,6 @@ import Error from "./components/Error";
 import List from "./components/List";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
 	return (

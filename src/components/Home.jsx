@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createList } from "../redux/shoppingLists";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Form, Stack, Modal, Button } from "react-bootstrap";
 
@@ -27,12 +27,14 @@ function Home() {
 						<div key={list.id}>
 							<li
 								className='list-group-item list-group-item-dark list-group-item-active mb-2 rounded'
+								style={{ cursor: "pointer" }}
 								onClick={() => {
 									navigate(`../lista/${list.id}`);
 								}}>
-								<h5>{list.listTitle}</h5>
-								<div>({list.items.length})</div>
-								<span>{list.date}</span>
+								<div>
+									{list.listTitle} ({list.items.length})
+								</div>
+								<small>Creada {list.date}</small>
 							</li>
 						</div>
 					);

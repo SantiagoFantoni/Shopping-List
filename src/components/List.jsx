@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
 import { Button } from "react-bootstrap";
+import { FaInstalod, FaArrowLeft, FaTrashAlt } from "react-icons/fa";
 import {
 	createItem,
 	deleteItem,
@@ -42,12 +43,13 @@ function List() {
 		<div className='container w-50 border bg-dark text-white rounded d-flex flex-column justify-content-center align-items-center'>
 			<div className='list-title-container'>
 				<h3 className='list-title'>{list.listTitle}</h3>
-				<Button
+
+				<FaTrashAlt
+					style={{ cursor: "pointer" }}
 					onClick={() => {
 						delList(list.id);
-					}}>
-					-
-				</Button>
+					}}
+				/>
 			</div>
 
 			<form onSubmit={newItem}>
@@ -83,16 +85,21 @@ function List() {
 								}}
 							/>
 							<div className={item.isBought ? "bought" : ""}>{item.name}</div>
-							<button
-								type='Button'
+
+							<FaTrashAlt
+								style={{ cursor: "pointer" }}
 								onClick={() => {
 									delItem({ id: item.id, listId: params.id });
-								}}></button>
+								}}
+							/>
 						</li>
 					);
 				})}
 			</ul>
-			<Link to='/'>volver</Link>
+			<Link to='/'>
+				<FaArrowLeft />
+				volver
+			</Link>
 		</div>
 	);
 }
