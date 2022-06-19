@@ -20,12 +20,13 @@ function Home() {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	return (
-		<div className='container-sm'>
-			<ul className='main-list'>
+		<div className='container-sm d-flex flex-column align-items-center'>
+			<ul className='list-group w-75'>
 				{shoppingLists.map((list) => {
 					return (
 						<div key={list.id}>
 							<li
+								className='list-group-item list-group-item-dark list-group-item-active mb-2 rounded'
 								onClick={() => {
 									navigate(`../lista/${list.id}`);
 								}}>

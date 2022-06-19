@@ -9,7 +9,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
 	return (
 		<div className='App'>
-			<h1>HackList</h1>
+			<h1 className='text-white'>HackList</h1>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/lista/:id' element={<List />} />

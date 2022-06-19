@@ -16,7 +16,7 @@ function List() {
 	const list = useSelector((state) =>
 		state.shoppingLists.find((list) => list.id === params.id)
 	);
-	console.log("--------", list, "-----------");
+
 	const [input, setInput] = useState("");
 	const dispatch = useDispatch();
 	const newItem = (e) => {
@@ -39,7 +39,7 @@ function List() {
 		navigate("/");
 	};
 	return (
-		<div className='container w-50 border bg-dark text-white rounded'>
+		<div className='container w-50 border bg-dark text-white rounded d-flex flex-column justify-content-center align-items-center'>
 			<div className='list-title-container'>
 				<h3 className='list-title'>{list.listTitle}</h3>
 				<Button
@@ -51,7 +51,7 @@ function List() {
 			</div>
 
 			<form onSubmit={newItem}>
-				<div class='input-group mb-3 w-50'>
+				<div class='input-group mb-3'>
 					<input
 						type='text'
 						class='form-control'
@@ -69,10 +69,12 @@ function List() {
 					</button>
 				</div>
 			</form>
-			<ul className='product-list'>
+			<ul className='list-group w-75 d-flex align-items-center'>
 				{list.items.map((item) => {
 					return (
-						<li key={item.id}>
+						<li
+							key={item.id}
+							className='list-group-item list-group-item-dark w-50 d-flex align-items-center justify-content-between'>
 							<input
 								className='item-input'
 								type='checkbox'
@@ -80,15 +82,12 @@ function List() {
 									dispatch(boughtItem({ id: item.id, listId: params.id }));
 								}}
 							/>
-							<span className={item.isBought ? "bought" : ""}>{item.name}</span>
-							<Button
-								className='mx-3'
+							<div className={item.isBought ? "bought" : ""}>{item.name}</div>
+							<button
 								type='Button'
 								onClick={() => {
 									delItem({ id: item.id, listId: params.id });
-								}}>
-								-
-							</Button>
+								}}></button>
 						</li>
 					);
 				})}
