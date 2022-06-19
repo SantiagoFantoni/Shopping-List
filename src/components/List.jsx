@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { nanoid } from "@reduxjs/toolkit";
+import { Button } from "react-bootstrap";
 import {
 	createItem,
 	deleteItem,
 	deleteList,
 	boughtItem,
 } from "../redux/shoppingLists";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { nanoid } from "@reduxjs/toolkit";
-import { Button } from "react-bootstrap";
 
 function List() {
 	const navigate = useNavigate();
@@ -39,7 +39,7 @@ function List() {
 		navigate("/");
 	};
 	return (
-		<div className='container-sm'>
+		<div className='container w-50 border bg-dark text-white rounded'>
 			<div className='list-title-container'>
 				<h3 className='list-title'>{list.listTitle}</h3>
 				<Button
@@ -51,21 +51,30 @@ function List() {
 			</div>
 
 			<form onSubmit={newItem}>
-				<input
-					type='text'
-					value={input}
-					name='item'
-					onChange={(e) => {
-						setInput(e.target.value);
-					}}
-				/>
-				<Button type='submit'>+</Button>
+				<div class='input-group mb-3 w-50'>
+					<input
+						type='text'
+						class='form-control'
+						placeholder='Ingrese un item'
+						value={input.charAt(0).toUpperCase() + input.slice(1)}
+						onChange={(e) => {
+							setInput(e.target.value);
+						}}
+					/>
+					<button
+						class='btn btn-outline-secondary'
+						type='submit'
+						id='button-addon2'>
+						+
+					</button>
+				</div>
 			</form>
 			<ul className='product-list'>
 				{list.items.map((item) => {
 					return (
 						<li key={item.id}>
 							<input
+								className='item-input'
 								type='checkbox'
 								onChange={() => {
 									dispatch(boughtItem({ id: item.id, listId: params.id }));
@@ -73,6 +82,7 @@ function List() {
 							/>
 							<span className={item.isBought ? "bought" : ""}>{item.name}</span>
 							<Button
+								className='mx-3'
 								type='Button'
 								onClick={() => {
 									delItem({ id: item.id, listId: params.id });

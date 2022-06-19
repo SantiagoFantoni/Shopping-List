@@ -59,20 +59,23 @@ function Home() {
 								type='text'
 								placeholder='ej:Fruteria...'
 								autoFocus
-								value={listTitle}
+								value={listTitle.charAt(0).toUpperCase() + listTitle.slice(1)}
 								onChange={(event) => {
 									setListTitle(event.target.value);
 								}}
 							/>
+							<Stack
+								className='d-flex justify-content-center my-3'
+								direction='horizontal'
+								gap={2}>
+								<Button variant='secondary' onClick={handleClose}>
+									Cerrar
+								</Button>
+								<Button type='submit' variant='success' onClick={handleClose}>
+									Crear
+								</Button>
+							</Stack>
 						</Form.Group>
-						<Stack direction='horizontal' gap={2}>
-							<Button variant='secondary' onClick={handleClose}>
-								Cerrar
-							</Button>
-							<Button type='submit' variant='success' onClick={handleClose}>
-								Crear
-							</Button>
-						</Stack>
 					</Form>
 				</Modal.Body>
 			</Modal>

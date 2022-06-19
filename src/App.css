@@ -3,7 +3,6 @@
 	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-
 .main-list {
 	list-style: none;
 	padding-left: 0;
@@ -15,8 +14,9 @@
 	margin: 2px 0px;
 	cursor: pointer;
 }
-.main-list li:hover {
-	background-color: aquamarine;
+form {
+	display: flex;
+	justify-content: center;
 }
 .product-list {
 	list-style: none;
@@ -30,8 +30,12 @@
 	align-items: center;
 	margin: 2px;
 }
+.item-input {
+	margin-right: 1rem;
+}
 .bought {
 	text-decoration: line-through;
+	color: brown;
 }
 .list-title-container {
 	display: flex;
