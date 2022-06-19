@@ -13,16 +13,19 @@ form {
 .item-input {
 	margin-right: 1rem;
 }
+
 .bought {
 	text-decoration: line-through;
 	color: brown;
 }
+
 .list-title-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 2rem 0;
 }
+
 .list-title {
 	padding-right: 1rem;
 }

@@ -76,7 +76,7 @@ function List() {
 					return (
 						<li
 							key={item.id}
-							className='list-group-item list-group-item-dark w-50 d-flex align-items-center justify-content-between'>
+							className='list-group-item list-group-item-dark d-flex align-items-center justify-content-between'>
 							<input
 								className='item-input'
 								type='checkbox'
@@ -84,7 +84,7 @@ function List() {
 									dispatch(boughtItem({ id: item.id, listId: params.id }));
 								}}
 							/>
-							<div className={item.isBought ? "bought" : ""}>{item.name}</div>
+							<span className={item.isBought ? "bought" : ""}>{item.name}</span>
 
 							<FaTrashAlt
 								style={{ cursor: "pointer" }}
